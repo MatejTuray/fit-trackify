@@ -7,7 +7,7 @@ import numeral from "numeral"
 const WorkoutSummary = (props) => {
     return (
         <div>
-            <p>Viewing {props.workouts.length} {props.workouts.length === 1 ? "workout" : "workouts"}, with the total workout duration of {numeral(props.totals).format("00:00:00")} </p>
+            <h1>Viewing {props.workouts.length} {props.workouts.length === 1 ? "workout" : "workouts"}, with the total workout duration of {numeral(props.totals).format("00:00:00")} </h1>
         </div>
     )
 }

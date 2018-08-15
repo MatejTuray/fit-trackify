@@ -1,16 +1,16 @@
 import React from 'react';
 import {connect} from "react-redux"
 import WorkoutForm from "./WorkoutForm"
-import { editWorkout } from '../actions/workouts';
-import { removeWorkout } from "../actions/workouts";
+import { startEditWorkout } from '../actions/workouts';
+import { startRemoveWorkout } from "../actions/workouts";
 const EditPage = (props) => {
     
     console.log(props)
     return (
         
             <div>
-                <WorkoutForm workout={props.workout} onSubmit={(workout) => { console.log("updated!", workout); props.dispatch(editWorkout(props.workout.id, workout)); props.history.push("/") }}/>
-                <button onClick={() => { props.dispatch(removeWorkout({id: props.workout.id}));  props.history.push("/") } } >Remove</button>
+                <WorkoutForm workout={props.workout} onSubmit={(workout) => { console.log("updated!", workout); props.dispatch(startEditWorkout(props.workout.id, workout)); props.history.push("/") }}/>
+                <button onClick={() => { props.dispatch(startRemoveWorkout({id: props.workout.id}));  props.history.push("/") } } >Remove</button>
             </div>
         
     );

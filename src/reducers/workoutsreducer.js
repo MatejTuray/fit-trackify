@@ -18,6 +18,9 @@ export default  (state = workoutReducerDefault, action) => {
                 return workout
             }
         })
+        case "SET_WORKOUT":
+
+            return action.workouts
         default:
             return state
     }
