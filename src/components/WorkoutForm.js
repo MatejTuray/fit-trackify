@@ -87,7 +87,7 @@ export default class WorkoutForm extends React.Component{
             console.log("submitted!")
             this.props.onSubmit({
                 description: this.state.description,
-                amountTime: parseInt(this.state.amountTime),
+                amountTime: parseInt(this.state.amountTime * 60),
                 note: this.state.note,
                 createdAt: this.state.createdAt.valueOf()
             })

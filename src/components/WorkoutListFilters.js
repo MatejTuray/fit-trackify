@@ -34,10 +34,10 @@ class WorkoutListFilters extends React.Component {
             <input type="text" defaultValue="filter me" onChange={(e) => this.props.dispatch(setText(e.target.value))}/>
             <select value={this.props.filters.sortBy} onChange={(e) => {
             if (e.target.value === "amountTime") { 
-                props.dispatch(sortByAmount())
+                this.props.dispatch(sortByAmount())
             } 
             else if (e.target.value === "date"){
-                props.dispatch(sortByDate())}
+                this.props.dispatch(sortByDate())}
             }}>
                 <option value="amountTime">Workout length</option>
                 <option value="date">Date</option>
