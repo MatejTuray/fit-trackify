@@ -15,7 +15,7 @@ export default class WorkoutForm extends React.Component{
         this.state = {
             description: this.props.workout ? this.props.workout.description : "",
             note: this.props.workout ? this.props.workout.note : "",
-            amountTime: this.props.workout ? this.props.workout.amountTime.toString() : "" ,
+            amountTime: this.props.workout ? (this.props.workout.amountTime /60 ).toString() : "" ,
             createdAt: this.props.workout ? moment(this.props.workout.createdAt) : moment(),
             calendarFocused : false,
             error: ""
@@ -87,7 +87,7 @@ export default class WorkoutForm extends React.Component{
             console.log("submitted!")
             this.props.onSubmit({
                 description: this.state.description,
-                amountTime: parseInt(this.state.amountTime * 60),
+                amountTime: parseInt(this.state.amountTime*60),
                 note: this.state.note,
                 createdAt: this.state.createdAt.valueOf()
             })
@@ -101,7 +101,7 @@ export default class WorkoutForm extends React.Component{
                 <form onSubmit={this.onSubmit}>
                     {this.state.error !== "" ? <p>{this.state.error}</p> : undefined}
                     <input type="text" placeholder="Workout description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/>
-                    <input type="number" placeholder="Workout length in minutes" value={this.state.amountTime} onChange={this.onAmountChange} min={0}  />
+                    <input type="text"  placeholder="Workout length in minutes" value={this.state.amountTime} onChange={this.onAmountChange}    />
                     <SingleDatePicker  isOutsideRange={() => false} numberOfMonths= {1} date={this.state.createdAt} onDateChange={this.onDateChange} focused={this.state.calendarFocused} onFocusChange={this.onFocusChange}  />
                     <textarea placeholder="Add notes about your workout" value={this.state.note} onChange={this.onNoteChange}></textarea>
                     <button>Add Workout</button>
