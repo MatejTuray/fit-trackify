@@ -9,7 +9,8 @@ export const addWorkout = (workout) => {
 }
 
 export const startAddWorkout = ({ description="",note="",amountTime=0, createdAt=0 } = {}) => {
-    return (dispatch) =>  {
+    return (dispatch, getState) =>  {
+        const uid = getState().auth.uid
         const workout = {
             description,
             note,
@@ -17,7 +18,7 @@ export const startAddWorkout = ({ description="",note="",amountTime=0, createdAt
             createdAt,
         }
 
-        database.ref("workouts").push(workout).then((ref) => {dispatch(addWorkout(
+        database.ref(`users/${uid}/workouts`).push(workout).then((ref) => {dispatch(addWorkout(
             {
                 id: ref.key,
                 ...workout
@@ -36,8 +37,9 @@ export const removeWorkout = ({ id } = {}) =>{
     }
 
 export const startRemoveWorkout = ({ id } = {}) => {
-    return  (dispatch) => {
-     return database.ref(`workouts/${id}`).remove().then(() => {dispatch(removeWorkout({id}))})
+    return  (dispatch,getState) => {
+        const uid = getState().auth.uid
+     return database.ref(`users/${uid}/workouts/${id}`).remove().then(() => {dispatch(removeWorkout({id}))})
     }
 }
 
@@ -50,8 +52,9 @@ export const editWorkout = (id, updates) => ({
 })
 
 export const startEditWorkout = (id,updates) => {
-    return (dispatch) => {
-        return database.ref(`workouts/${id}`).update({
+    return (dispatch,getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/workouts/${id}`).update({
             ...updates
         }).then(() => { dispatch(editWorkout(id,updates))})
     }
@@ -63,8 +66,9 @@ export const setWorkouts = (workouts) => ({
 })
 
 export const startSetWorkouts = () => {
-    return (dispatch) => {
-       return database.ref("workouts").once("value").then((snapshot) => {const workouts = []; snapshot.forEach((childSnapshot) => {
+    return (dispatch,getState) => {
+        const uid = getState().auth.uid
+       return database.ref(`users/${uid}/workouts`).once("value").then((snapshot) => {const workouts = []; snapshot.forEach((childSnapshot) => {
             workouts.push({
             id: childSnapshot.key,
             ...childSnapshot.val()
@@ -78,4 +82,6 @@ export const startSetWorkouts = () => {
     };
    
 }
-    
+
+
+

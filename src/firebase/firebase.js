@@ -14,8 +14,9 @@ firebase.initializeApp(config);
 
 
 const database = firebase.database()
+const googleProvider = new firebase.auth.GoogleAuthProvider()
 
-export {firebase, database as default};
+export {firebase, googleProvider, database as default};
 
 // database.ref("workouts").on("child_removed", (snapshot) => {console.log(snapshot.key,snapshot.val())})
 

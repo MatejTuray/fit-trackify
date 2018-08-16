@@ -9,8 +9,8 @@ const EditPage = (props) => {
     return (
         
             <div>
-                <WorkoutForm workout={props.workout} onSubmit={(workout) => { console.log("updated!", workout); props.dispatch(startEditWorkout(props.workout.id, workout)); props.history.push("/") }}/>
-                <button onClick={() => { props.dispatch(startRemoveWorkout({id: props.workout.id}));  props.history.push("/") } } >Remove</button>
+                <WorkoutForm workout={props.workout} onSubmit={(workout) => { console.log("updated!", workout); props.dispatch(startEditWorkout(props.workout.id, workout)); props.history.push("/dashboard") }}/>
+                <button onClick={() => { props.dispatch(startRemoveWorkout({id: props.workout.id}));  props.history.push("/dashboard") } } >Remove</button>
             </div>
         
     );
