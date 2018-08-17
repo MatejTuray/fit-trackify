@@ -9,6 +9,7 @@ import "./firebase/firebase"
 import "react-dates/lib/css/_datepicker.css"
 import {firebase} from  "./firebase/firebase"
 import { login, logout } from './actions/auth';
+import LoadingPage from "./components/LoadingPage"
 
 const store = configStore();
 let hasRendered = false
@@ -22,7 +23,7 @@ const renderApp =  () => {
         hasRendered = true
     }
 };
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
+ReactDOM.render(<LoadingPage/>, document.getElementById('app'))
 
 
 

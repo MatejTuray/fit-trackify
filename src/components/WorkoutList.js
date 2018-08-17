@@ -6,8 +6,13 @@ import visibleWorkouts from "../selectors/visibleWorkouts"
 
 const WorkoutList = (props) => {
     return (
-        <div>
-            <h1>Workout List</h1>
+        <div className="container">
+        
+            <div className="list-header">
+            <div className="show-mobile">Workouts</div>
+            <div className="show-desktop">Workout</div>
+            <div className="show-desktop">Duration</div>
+            </div>
             {props.workouts.map((workout) => <Workout id={workout.id} key={workout.id} description={workout.description} amountTime={workout.amountTime} createdAt={workout.createdAt} note={workout.note} /> )}
             
         </div>

@@ -97,19 +97,20 @@ export default class WorkoutForm extends React.Component{
 
     render(){
         return (
-            <div>
-                <form onSubmit={this.onSubmit}>
-                    {this.state.error !== "" ? <p>{this.state.error}</p> : undefined}
-                    <input type="text" placeholder="Workout description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/>
-                    <input type="text"  placeholder="Workout length in minutes" value={this.state.amountTime} onChange={this.onAmountChange}    />
+          
+                <form className="form" onSubmit={this.onSubmit}>
+                    {this.state.error  ? <p className="error">{this.state.error}</p> : undefined}
+                    <input className="text-input" type="text" placeholder="Workout description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/>
+                    <input className="text-input" type="text"  placeholder="Workout length in minutes" value={this.state.amountTime} onChange={this.onAmountChange}    />
                     <SingleDatePicker  isOutsideRange={() => false} numberOfMonths= {1} date={this.state.createdAt} onDateChange={this.onDateChange} focused={this.state.calendarFocused} onFocusChange={this.onFocusChange}  />
-                    <textarea placeholder="Add notes about your workout" value={this.state.note} onChange={this.onNoteChange}></textarea>
-                    <button>Add Workout</button>
+                    <textarea className="textarea"placeholder="Add notes about your workout" value={this.state.note} onChange={this.onNoteChange}></textarea>
+                    <button className="btn btn-primary btn-lg btn-block" > <i className="fas fa-save"></i>   
+
+<span className="btn-text">Save workout</span></button>
                     
                 </form>
 
-            </div>
-            
+           
         )
     }
 }

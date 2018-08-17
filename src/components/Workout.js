@@ -6,15 +6,20 @@ import numeral from "numeral"
 const ConnectedWorkout = (props) => {
 
     return(
-        <div>
-        <Link to={`/edit/${props.id}`}>
-            <h3>{props.description}</h3>
-            </Link>
-            <p>{numeral(props.amountTime).format("00:00:00")}  - 
-            
-            {moment(props.createdAt).format(" MMMM Do, YYYY")}</p>
+       
+            <Link className="list-item" to={`/edit/${props.id}`}>
+            <div >
+            <h3 className="list-item-title">{props.description}</h3>
+            <span className="list-item-subtitle">{moment(props.createdAt).format(" MMMM Do, YYYY")}</span>
             <p>{props.note}</p>
-        </div>
+            </div>
+            
+            <h3 className="list-item-data">{numeral(props.amountTime).format("00:00:00")}</h3>      
+                       
+             
+             
+            </Link>
+  
          
         
     )

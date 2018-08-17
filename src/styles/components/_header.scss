@@ -1,0 +1,37 @@
+.header{
+    background: $header-bgcolor;
+}
+
+.header-text{
+    color: white;
+    font-weight: bold;    
+    text-decoration: none;
+
+    h1{
+        margin: 0;
+        font-size: $l-size;
+
+    }
+}
+
+
+.header-text:visited{
+    color: white;
+    font-weight: bold;
+}
+
+.header-text:hover{
+    color: white;
+    font-weight: bold;
+    text-decoration: none
+}
+
+
+
+.header-content{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: $l-size;
+}
+

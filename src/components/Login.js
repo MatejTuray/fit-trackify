@@ -1,13 +1,17 @@
 import React from "react"
 import {connect} from "react-redux"
 import {startLogin} from "../actions/auth"
+import GoogleButton from 'react-google-button'
 export const Login = (props) => {
 
     return (
-        <div>
-            <h1>Welcome to FitTrackify!</h1>
-            <p>Please log in to get started</p>
-            <button onClick={props.startLogin}>Login</button>
+        <div className="login">
+            <div className="login-box">
+            <h1 className="login-title">FitTrackify</h1>
+            <p className="login-text">Track workouts. Get results.</p>
+            <GoogleButton className="login-button" onClick={props.startLogin}>Login </GoogleButton>
+            
+            </div>
         </div>
     )
 

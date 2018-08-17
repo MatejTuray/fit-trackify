@@ -3,14 +3,19 @@ import {BrowserRouter,Route,Switch,Link,NavLink} from "react-router-dom";
 import {connect} from "react-redux"
 import {startLogout} from "../actions/auth"
 const Header = (props) => (
-    <header>
-        <h1>FitTrackify!</h1>
-        <NavLink to="/dashboard" activeClassName="is-active" exact={true}>Dashboard</NavLink>
+    
+    <header className="header">
+        <div>
+            <div className="header-content">
+        <Link className="header-text" to="/dashboard"><h1>Dashboard</h1></Link>
         <br/>
-        <NavLink to="/create" activeClassName="is-active">Create</NavLink>
+        
         <br/>
-        <button onClick={props.startLogout}>Log out</button>
+        <button className="logout-button" onClick={props.startLogout}>Logout  <i className="fas fa-sign-out-alt"></i></button>
+        </div>
+        </div>
     </header>
+    
 );
 
 const mapDispatchToProps = (dispatch) => ({
